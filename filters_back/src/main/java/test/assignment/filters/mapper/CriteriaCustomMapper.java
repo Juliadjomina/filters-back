@@ -18,6 +18,7 @@ import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,6 +57,7 @@ public class CriteriaCustomMapper {
                     criteria.setComparisonOperator(comparisonOperator);
                     CriteriaType criteriaType = criteriaTypeRepository.getCriteriaTypeByType(m.getCriteriaType());
                     criteria.setType(criteriaType);
+                    criteria.setCreatedAt(new Date());
                     criteria.setFilter(filter);
                     return criteria;
                 })
