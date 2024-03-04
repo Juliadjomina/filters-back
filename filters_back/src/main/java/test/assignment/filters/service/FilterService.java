@@ -8,8 +8,10 @@ import test.assignment.filters.dto.FilterDto;
 import test.assignment.filters.dto.FilterRequestDto;
 import test.assignment.filters.mapper.FilterMapper;
 import test.assignment.filters.persistence.model.Filter;
+import test.assignment.filters.persistence.repository.ComparisonOperatorRepository;
 import test.assignment.filters.persistence.repository.FilterRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class FilterService {
 
     private final FilterRepository filterRepository;
+    private final ComparisonOperatorRepository comparisonOperatorRepository;
     private final CriteriaService criteriaService;
 
     private final FilterMapper filterMapper;
@@ -32,10 +35,11 @@ public class FilterService {
     }
 
     public Long saveFilter(final FilterRequestDto filterRequestDto) {
-//        filterRepository.
-//        filterRepository.
-        criteriaService.saveCriteriaList(filterRequestDto.getCriteriaList());
+        Filter filter = filterMapper.filterRequestDtoToFilter(filterRequestDto);
+        // TODO any other opportunity to
+        filter.setCratedAt(new Date());
+        filterRepository.save(filter);
+        criteriaService.saveCriteriaList(filter, filterRequestDto.getCriteriaList());
         return null;
     }
-
 }

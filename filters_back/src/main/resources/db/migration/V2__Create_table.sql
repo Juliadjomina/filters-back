@@ -9,7 +9,7 @@ VALUES ('NUMBER'), ('TEXT'), ('DATE');
 
 
 CREATE TABLE Criteria (
-                          id INT PRIMARY KEY ,
+                          id SERIAL PRIMARY KEY ,
                           filter_id INT,
                           type_id INT NOT NULL,
                           comparison_operator_id INT NOT NULL,

@@ -19,5 +19,5 @@ import java.util.Date;
 public class NumberCriteria extends Criteria {
 
     @Column(name = "value", nullable = false)
-    private Long value;
+    private Long number;
 }

@@ -17,5 +17,5 @@ import lombok.Setter;
 @Table(name = "TextCriteria")
 public class TextCriteria extends Criteria {
     @Column(name = "value", nullable = false)
-    private String value;
+    private String text;
 }

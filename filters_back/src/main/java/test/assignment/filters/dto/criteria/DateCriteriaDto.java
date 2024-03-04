@@ -11,5 +11,5 @@ import java.util.Date;
 @ToString
 public class DateCriteriaDto extends CriteriaDto {
 
-    private Date value;
+    private Date date;
 }

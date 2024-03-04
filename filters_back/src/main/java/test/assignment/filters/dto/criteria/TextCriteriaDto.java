@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class TextCriteriaDto extends CriteriaDto {
-    private String value;
+    private String text;
 }

@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class NumberCriteriaDto extends CriteriaDto {
-    private Long value;
+
+    private Long number;
 
 }

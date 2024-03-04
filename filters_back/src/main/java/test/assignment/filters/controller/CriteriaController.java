@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import test.assignment.filters.dto.FilterDto;
+import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.mapper.CriteriaMapper;
 import test.assignment.filters.mapper.CriteriaMapperImpl;
 import test.assignment.filters.mapper.FilterMapper;
@@ -23,7 +24,7 @@ public class CriteriaController {
     private final CriteriaService criteriaService;
 
     @GetMapping(produces = "application/json")
-    public List<Criteria> allCriterias() {
+    public List<CriteriaDto> allCriterias() {
         return criteriaService.getAllCriterias();
     }
 

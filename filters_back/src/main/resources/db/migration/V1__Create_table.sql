@@ -27,7 +27,7 @@ VALUES ('Equal to', 'Number'),
 
 
 CREATE TABLE Filter (
-                         id INT PRIMARY KEY,
+                         id SERIAL PRIMARY KEY,
                          filter_name VARCHAR(255) NOT NULL,
                          created_at DATE,
                          archived_at DATE

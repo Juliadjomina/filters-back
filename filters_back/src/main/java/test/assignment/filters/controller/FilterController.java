@@ -4,6 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import test.assignment.filters.dto.FilterDto;
 import test.assignment.filters.dto.FilterRequestDto;
+import test.assignment.filters.dto.criteria.CriteriaDto;
+import test.assignment.filters.dto.criteria.DateCriteriaDto;
+import test.assignment.filters.dto.criteria.NumberCriteriaDto;
+import test.assignment.filters.dto.criteria.TextCriteriaDto;
 import test.assignment.filters.service.FilterService;
 
 import java.util.List;
@@ -21,12 +25,12 @@ public class FilterController {
     }
 
     @DeleteMapping("{id}")
-    private void deleteFilter(@PathVariable("id") Long id) {
+    public void deleteFilter(@PathVariable("id") Long id) {
         filterService.deleteFilter(id);
     }
 
     @PostMapping
-    private Long saveFilter(@RequestBody FilterRequestDto filterRequestDto) {
+    public Long saveFilter(@RequestBody FilterRequestDto filterRequestDto) {
         return filterService.saveFilter(filterRequestDto);
     }
 

@@ -18,6 +18,8 @@ import java.util.List;
 public interface CriteriaMapper {
     TextCriteria toTextCriteria(TextCriteriaDto textCriteriadto);
 
+    @Mapping(target = "number", source = "number")
+
     NumberCriteria toNumberCriteria(NumberCriteriaDto numberCriteriadto);
     DateCriteria toDateCriteria(DateCriteriaDto dateCriteriadto);
 
@@ -30,4 +32,5 @@ public interface CriteriaMapper {
     CriteriaDto toCriteriaDto(Criteria criteria);
 
     List<CriteriaDto> toCriteriaDtos(List<Criteria> criterias);
+
 }

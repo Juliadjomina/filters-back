@@ -18,5 +18,5 @@ import java.util.Date;
 @Setter
 public class DateCriteria extends Criteria {
     @Column(name = "value")
-    private Date value;
+    private Date date;
 }

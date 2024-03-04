@@ -13,7 +13,6 @@ import java.util.List;
 @ToString
 public class FilterRequestDto {
 
-    private Long id;
     private String filterName;
     private List<CriteriaDto> criteriaList;
 }
