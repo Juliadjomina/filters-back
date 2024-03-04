@@ -1,0 +1,27 @@
+#docker compose version
+version: '3.8'
+
+#create net with name filters-net. Simplifies communication between containers
+networks:
+  filters-net:
+
+services:
+  filters-db:
+    image: postgres:latest
+    container_name: filters_db
+    environment:
+      - POSTGRES_DB=filters_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - postgres-filters-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    #контейнер открывает порт 5432. Это необходимо для внутренней коммуникации между контейнерами, но не открывает этот порт для внешних соединений.
+    expose:
+      - 5432
+    networks:
+      - filters-net
+
+volumes:
+  postgres-filters-data:
