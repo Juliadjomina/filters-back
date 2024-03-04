@@ -47,6 +47,7 @@ public class CriteriaCustomMapper {
         };
     }
 
+    // TODO refacto VÄGA KOLE
     public List<Criteria> toCriteriaList(Filter filter, List<CriteriaDto> criteriaDtoList) {
         return criteriaDtoList.stream()
                 .map(m -> {

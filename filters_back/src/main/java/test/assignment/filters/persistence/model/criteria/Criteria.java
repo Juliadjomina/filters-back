@@ -41,6 +41,4 @@ public abstract class Criteria {
 
     @Column(name = "archived_at")
     private Date archivedAt;
-
-
 }

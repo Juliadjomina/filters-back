@@ -14,14 +14,4 @@ import java.util.List;
 
 @Repository
 public interface CriteriaRepository extends JpaRepository<Criteria, Long> {
-//    @Query(value = "SELECT * FROM DateCriteria dc JOIN Filter f ON f.id =:filterId", nativeQuery = true)
-//    List<DateCriteria> getDateCriteria(@Param("filterId") Long filterId);
-//
-//    @Query("select dc from NumberCriteria dc where dc.filter.id=:filterId")
-//    List<NumberCriteria> getNumberCriteria(@Param("filterId") Long filterId);
-//
-//    @Query("select dc from TextCriteria dc where dc.filter.id=:filterId")
-//    List<TextCriteria> getTextCriteria(@Param("filterId") Long filterId);
-
-
 }

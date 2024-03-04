@@ -25,5 +25,4 @@ public class ComparisonOperator {
 
     @Column(name = "operator_type")
     private String operatorType;
-
 }

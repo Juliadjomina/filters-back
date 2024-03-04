@@ -11,6 +11,5 @@ import lombok.*;
 public class ComparisonOperatorDto {
 
     private String operatorName;
-
     private String operatorType;
 }

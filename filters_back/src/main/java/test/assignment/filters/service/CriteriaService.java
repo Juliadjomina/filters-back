@@ -3,18 +3,12 @@ package test.assignment.filters.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import test.assignment.filters.dto.criteria.CriteriaDto;
-import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
 import test.assignment.filters.mapper.CriteriaCustomMapper;
-import test.assignment.filters.mapper.CriteriaMapper;
-import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.Filter;
 import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.model.criteria.DateCriteria;
 import test.assignment.filters.persistence.model.criteria.NumberCriteria;
 import test.assignment.filters.persistence.model.criteria.TextCriteria;
-import test.assignment.filters.persistence.repository.ComparisonOperatorRepository;
 import test.assignment.filters.persistence.repository.DateCriteriaRepository;
 import test.assignment.filters.persistence.repository.NumberCriteriaRepository;
 import test.assignment.filters.persistence.repository.TextCriteriaRepository;
@@ -29,7 +23,6 @@ public class CriteriaService {
     private final TextCriteriaRepository textCriteriaRepository;
     private final DateCriteriaRepository dateCriteriaRepository;
     private final NumberCriteriaRepository numberCriteriaRepository;
-    private final ComparisonOperatorRepository comparisonOperatorRepository;
     private final CriteriaCustomMapper criteriaCustomMapper;
 
 

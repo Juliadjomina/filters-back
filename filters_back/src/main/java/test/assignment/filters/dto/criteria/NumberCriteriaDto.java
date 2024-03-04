@@ -10,5 +10,4 @@ import lombok.*;
 public class NumberCriteriaDto extends CriteriaDto {
 
     private Long number;
-
 }

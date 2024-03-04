@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class FilterDto {
+
     private Long id;
     private String filterName;
 }
