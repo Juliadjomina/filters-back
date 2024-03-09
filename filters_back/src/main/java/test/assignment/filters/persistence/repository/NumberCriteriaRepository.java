@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface NumberCriteriaRepository extends JpaRepository<NumberCriteria, Long> {
-    @Query("SELECT tc FROM NumberCriteria tc JOIN FETCH tc.comparisonOperator JOIN FETCH tc.filter JOIN FETCH tc.type")
-    List<NumberCriteria> getDateCriteria();
+    @Query("SELECT tc FROM NumberCriteria tc JOIN FETCH tc.comparisonOperator JOIN FETCH tc.filter JOIN FETCH tc.type WHERE tc.filter.id =:id")
+    List<NumberCriteria> getDateCriteria(Long id);
 }

@@ -1,22 +1,21 @@
 package test.assignment.filters.persistence.model.criteria;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.context.annotation.Primary;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
+
+@Data
 @MappedSuperclass
-@AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
 public abstract class Criteria {
 
     @Id
@@ -37,8 +36,9 @@ public abstract class Criteria {
     private ComparisonOperator comparisonOperator;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "archived_at")
-    private Date archivedAt;
+    private OffsetDateTime archivedAt;
 }
+

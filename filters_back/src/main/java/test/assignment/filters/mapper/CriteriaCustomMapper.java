@@ -17,6 +17,7 @@ import test.assignment.filters.persistence.repository.ComparisonOperatorReposito
 import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 
 import javax.swing.*;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,11 +54,11 @@ public class CriteriaCustomMapper {
         return criteriaDtoList.stream()
                 .map(m -> {
                     Criteria criteria = mapToCriteria(m);
-                    ComparisonOperator comparisonOperator = comparisonOperatorRepository.getComparisonOperatorByOperatorNameAndOperatorType(m.getComparisonOperator().getOperatorName(), m.getComparisonOperator().getOperatorType());
+                    ComparisonOperator comparisonOperator = comparisonOperatorRepository.getComparisonOperatorByOperatorNameAndOperatorType(m.getComparisonOperator().operatorName(), m.getComparisonOperator().operatorType());
                     criteria.setComparisonOperator(comparisonOperator);
                     CriteriaType criteriaType = criteriaTypeRepository.getCriteriaTypeByType(m.getCriteriaType());
                     criteria.setType(criteriaType);
-                    criteria.setCreatedAt(new Date());
+                    criteria.setCreatedAt(OffsetDateTime.now());
                     criteria.setFilter(filter);
                     return criteria;
                 })

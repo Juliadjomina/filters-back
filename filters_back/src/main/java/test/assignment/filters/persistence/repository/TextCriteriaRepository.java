@@ -14,6 +14,6 @@ import java.util.List;
 @Repository
 public interface TextCriteriaRepository extends JpaRepository<TextCriteria, Long> {
 
-    @Query("SELECT tc FROM TextCriteria tc JOIN FETCH tc.comparisonOperator JOIN FETCH tc.filter JOIN FETCH tc.type")
-    List<TextCriteria> getDateCriteria();
+    @Query("SELECT tc FROM TextCriteria tc JOIN FETCH tc.comparisonOperator JOIN FETCH tc.filter JOIN FETCH tc.type WHERE tc.filter.id =:id")
+    List<TextCriteria> getDateCriteria(Long id);
 }

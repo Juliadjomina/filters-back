@@ -1,1 +1,13 @@
-# add test container
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/filters_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: mysecretpassword
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

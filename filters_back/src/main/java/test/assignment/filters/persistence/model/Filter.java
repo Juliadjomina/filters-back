@@ -3,13 +3,12 @@ package test.assignment.filters.persistence.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Table(name = "Filter")
 public class Filter {
 
@@ -22,8 +21,8 @@ public class Filter {
     private String filterName;
 
     @Column(name = "created_at", nullable = false)
-    private Date cratedAt;
+    private OffsetDateTime cratedAt;
 
     @Column(name = "archived_at", nullable = false)
-    private Date archivedAt;
+    private OffsetDateTime archivedAt;
 }

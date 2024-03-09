@@ -2,11 +2,11 @@ package test.assignment.filters.dto.criteria;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@EqualsAndHashCode(callSuper = true)
 public class TextCriteriaDto extends CriteriaDto {
+
     private String text;
 }

@@ -1,35 +1,35 @@
-CREATE TABLE ComparisonOperator
+CREATE TABLE comparison_operator
 (
-    id            SERIAL PRIMARY KEY,
-    operator_name VARCHAR(255),
-    operator_type VARCHAR(50)
+    id            BIGSERIAL PRIMARY KEY,
+    operator_name TEXT,
+    operator_type TEXT
 );
 
-INSERT INTO ComparisonOperator (operator_name, operator_type)
-VALUES ('Equal to', 'Number'),
-       ('Not equal to', 'Number'),
-       ('Greater than', 'Number'),
-       ('Greater than or equal to', 'Number'),
-       ('Less than', 'Number'),
-       ('Less than or equal to', 'Number'),
+INSERT INTO comparison_operator (operator_name, operator_type)
+VALUES ('Equal to', 'NUMBER'),
+       ('Not equal to', 'NUMBER'),
+       ('Greater than', 'NUMBER'),
+       ('Greater than or equal to', 'NUMBER'),
+       ('Less than', 'NUMBER'),
+       ('Less than or equal to', 'NUMBER'),
 
-       ('Contains', 'Text'),
-       ('Does not contain', 'Text'),
-       ('Starts with', 'Text'),
-       ('Ends with', 'Text'),
+       ('Contains', 'TEXT'),
+       ('Does not contain', 'TEXT'),
+       ('Starts with', 'TEXT'),
+       ('Ends with', 'TEXT'),
 
-       ('Equal to', 'Date'),
-       ('Not equal to', 'Date'),
-       ('Before', 'Date'),
-       ('After', 'Date'),
-       ('On or before', 'Date'),
-       ('On or after', 'Date');
+       ('Equal to', 'DATE'),
+       ('Not equal to', 'DATE'),
+       ('Before', 'DATE'),
+       ('After', 'DATE'),
+       ('On or before', 'DATE'),
+       ('On or after', 'DATE');
 
 
-CREATE TABLE Filter (
-                         id SERIAL PRIMARY KEY,
+CREATE TABLE filter (
+                         id BIGSERIAL PRIMARY KEY,
                          filter_name VARCHAR(255) NOT NULL,
-                         created_at DATE,
+                         created_at DATE NOT NULL,
                          archived_at DATE
 );
 

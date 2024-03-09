@@ -4,18 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "TextCriteria")
+@EqualsAndHashCode(callSuper = true)
 public class TextCriteria extends Criteria {
+
     @Column(name = "value", nullable = false)
     private String text;
 }

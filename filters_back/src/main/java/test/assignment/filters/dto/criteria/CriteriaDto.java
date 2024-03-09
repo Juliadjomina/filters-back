@@ -6,11 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         property = "criteriaType",
@@ -24,7 +22,6 @@ import test.assignment.filters.dto.ComparisonOperatorDto;
 public class CriteriaDto {
 
     // TODO to check whether it works without this annotation
-    @JsonProperty("criteriaType")
     private String criteriaType;
 
     private ComparisonOperatorDto comparisonOperator;

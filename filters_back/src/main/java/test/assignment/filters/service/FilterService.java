@@ -8,6 +8,7 @@ import test.assignment.filters.mapper.FilterMapper;
 import test.assignment.filters.persistence.model.Filter;
 import test.assignment.filters.persistence.repository.FilterRepository;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class FilterService {
     public Long saveFilter(final FilterRequestDto filterRequestDto) {
         Filter filter = filterMapper.filterRequestDtoToFilter(filterRequestDto);
         // TODO any other opportunity to
-        filter.setCratedAt(new Date());
+        filter.setCratedAt(OffsetDateTime.now());
         filterRepository.save(filter);
-        criteriaService.saveCriteriaList(filter, filterRequestDto.getCriteriaList());
+        criteriaService.saveCriteriaList(filter, filterRequestDto.criteriaList());
         return null;
     }
 }

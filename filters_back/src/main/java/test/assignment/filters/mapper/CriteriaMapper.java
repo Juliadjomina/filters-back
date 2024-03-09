@@ -20,10 +20,13 @@ public interface CriteriaMapper {
 
     DateCriteria toDateCriteria(DateCriteriaDto dateCriteriadto);
 
+    @Mapping(target = "criteriaType", source = "textCriteria.type.type")
     TextCriteriaDto toTextCriteriaDto(TextCriteria textCriteria);
 
+    @Mapping(target = "criteriaType", source = "numberCriteria.type.type")
     NumberCriteriaDto toNumberCriteriaDto(NumberCriteria numberCriteria);
 
+    @Mapping(target = "criteriaType", source = "dateCriteria.type.type")
     DateCriteriaDto toDateCriteriaDto(DateCriteria dateCriteria);
 
     CriteriaDto toCriteriaDto(Criteria criteria);
