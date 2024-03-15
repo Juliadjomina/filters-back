@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class NumberCriteria extends Criteria {
+public class TitleCriteria extends Criteria {
 
     @Column(name = "value", nullable = false)
-    private Long number;
+    private String title;
 }

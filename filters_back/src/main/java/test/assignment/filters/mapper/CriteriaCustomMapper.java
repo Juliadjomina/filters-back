@@ -4,16 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
+import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
 import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.model.criteria.DateCriteria;
-import test.assignment.filters.persistence.model.criteria.NumberCriteria;
-import test.assignment.filters.persistence.model.criteria.TextCriteria;
+import test.assignment.filters.persistence.model.criteria.AmountCriteria;
+import test.assignment.filters.persistence.model.criteria.TitleCriteria;
 import test.assignment.filters.persistence.repository.ComparisonOperatorRepository;
 import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 
@@ -42,11 +42,11 @@ public class CriteriaCustomMapper {
 
     public CriteriaDto mapToDto(Criteria criteria) {
         return switch (criteria) {
-            case NumberCriteria numberCriteria -> criteriaMapper.toNumberCriteriaDto(numberCriteria);
-            case TextCriteria textCriteria -> criteriaMapper.toTextCriteriaDto(textCriteria);
+            case AmountCriteria amountCriteria -> criteriaMapper.toAmountCriteriaDto(amountCriteria);
+            case TitleCriteria titleCriteria -> criteriaMapper.toTitleCriteriaDto(titleCriteria);
             case DateCriteria dateCriteria -> criteriaMapper.toDateCriteriaDto(dateCriteria);
             case null, default ->
-                    throw new FiltersServiceRestClientException("criteria type can be number, text or date", ERROR_WRONG_CRITERIA_TYPE);
+                    throw new FiltersServiceRestClientException("criteria type can be amount, title or date", ERROR_WRONG_CRITERIA_TYPE);
         };
     }
 
@@ -68,8 +68,8 @@ public class CriteriaCustomMapper {
 
     private Criteria mapToCriteria(CriteriaDto criteriaDto) {
         return switch (criteriaDto) {
-            case NumberCriteriaDto numberCriteria -> criteriaMapper.toNumberCriteria(numberCriteria);
-            case TextCriteriaDto textCriteria -> criteriaMapper.toTextCriteria(textCriteria);
+            case AmountCriteriaDto amountCriteria -> criteriaMapper.toAmountCriteria(amountCriteria);
+            case TitleCriteriaDto titleCriteria -> criteriaMapper.toTitleCriteria(titleCriteria);
             case DateCriteriaDto dateCriteria -> criteriaMapper.toDateCriteria(dateCriteria);
             case null, default -> null;
         };

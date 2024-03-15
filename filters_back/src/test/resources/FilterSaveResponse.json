@@ -2,20 +2,20 @@
   "filterName": "ffff",
   "criteriaList": [
     {
-      "criteriaType": "NUMBER",
+      "criteriaType": "AMOUNT",
       "comparisonOperator": {
         "operatorName": "Less than",
-        "operatorType": "NUMBER"
+        "operatorType": "AMOUNT"
       },
-      "number": 54
+      "amount": 54
     },
     {
-      "criteriaType": "TEXT",
+      "criteriaType": "TITLE",
       "comparisonOperator": {
         "operatorName": "Starts with",
-        "operatorType": "TEXT"
+        "operatorType": "TITLE"
       },
-      "text": "fdbdfb"
+      "title": "fdbdfb"
     }
   ]
 }

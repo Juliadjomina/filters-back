@@ -19,8 +19,8 @@ import test.assignment.filters.dto.ComparisonOperatorDto;
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = DateCriteriaDto.class, name = "DATE"),
-        @JsonSubTypes.Type(value = NumberCriteriaDto.class, name = "NUMBER"),
-        @JsonSubTypes.Type(value = TextCriteriaDto.class, name = "TEXT")
+        @JsonSubTypes.Type(value = AmountCriteriaDto.class, name = "AMOUNT"),
+        @JsonSubTypes.Type(value = TitleCriteriaDto.class, name = "TITLE")
 })
 public class CriteriaDto {
 

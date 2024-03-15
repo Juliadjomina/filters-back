@@ -8,10 +8,9 @@ import test.assignment.filters.IntegrationTest;
 import test.assignment.filters.dto.FilterDto;
 import test.assignment.filters.dto.FilterRequestDto;
 import test.assignment.filters.persistence.model.criteria.Criteria;
-import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 import test.assignment.filters.persistence.repository.DateCriteriaRepository;
-import test.assignment.filters.persistence.repository.NumberCriteriaRepository;
-import test.assignment.filters.persistence.repository.TextCriteriaRepository;
+import test.assignment.filters.persistence.repository.AmountCriteriaRepository;
+import test.assignment.filters.persistence.repository.TitleCriteriaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,10 @@ class FilterServiceTest extends IntegrationTest {
     private FilterService filterService;
 
     @Autowired
-    private NumberCriteriaRepository numberCriteriaRepository;
+    private AmountCriteriaRepository amountCriteriaRepository;
 
     @Autowired
-    private TextCriteriaRepository textCriteriaRepository;
+    private TitleCriteriaRepository titleCriteriaRepository;
 
     @Autowired
     private DateCriteriaRepository dateCriteriaRepository;
@@ -46,16 +45,16 @@ class FilterServiceTest extends IntegrationTest {
     @DisplayName("Test save filter with criteria")
     @Sql(scripts = "classpath:testdb/clean/cleanTestDb.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void testSaveFilterWithCriteria() {
-        FilterRequestDto filterRequestDto = getFilterRequestDto(List.of(getDateCriteria(), getNumberCriteria(), getTextCriteria()));
+        FilterRequestDto filterRequestDto = getFilterRequestDto(List.of(getDateCriteria(), getAmountCriteria(), getTitleCriteria()));
         filterService.saveFilter(filterRequestDto);
 
         List<FilterDto> filterDtos = filterService.getAllFilters();
         assertThat(filterDtos).hasSize(1);
 
         List<Criteria> criterias = new ArrayList<>();
-        criterias.addAll(textCriteriaRepository.findAll());
+        criterias.addAll(titleCriteriaRepository.findAll());
         criterias.addAll(dateCriteriaRepository.findAll());
-        criterias.addAll(numberCriteriaRepository.findAll());
+        criterias.addAll(amountCriteriaRepository.findAll());
         assertThat(criterias).hasSize(3);
     }
 }

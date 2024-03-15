@@ -6,9 +6,7 @@ VALUES
     ('Filter 4', '2024-03-02', NULL),
     ('Filter 5', '2024-03-02', NULL);
 
-
--- Inserting into NumberCriteria table
-INSERT INTO number_criteria (filter_id, type_id, comparison_operator_id, created_at, archived_at, value)
+INSERT INTO amount_criteria (filter_id, type_id, comparison_operator_id, created_at, archived_at, value)
 VALUES
     (1, 1, 1, '2024-03-02', NULL, 10),
     (2, 1, 2, '2024-03-02', NULL, 20),
@@ -16,16 +14,14 @@ VALUES
     (4, 1, 4, '2024-03-02', NULL, 40),
     (5, 1, 5, '2024-03-02', NULL, 50);
 
--- Inserting into TextCriteria table
-INSERT INTO text_criteria (filter_id, type_id, comparison_operator_id, created_at, archived_at, value)
+INSERT INTO title_criteria (filter_id, type_id, comparison_operator_id, created_at, archived_at, value)
 VALUES
-    (1, 2, 7, '2024-03-02', NULL, 'Text 1'),
-    (2, 2, 7, '2024-03-02', NULL, 'Text 2'),
-    (3, 2, 8, '2024-03-02', NULL, 'Text 3'),
-    (4, 2, 9, '2024-03-02', NULL, 'Text 4'),
-    (5, 2, 10, '2024-03-02', NULL, 'Text 5');
+    (1, 2, 7, '2024-03-02', NULL, 'Title 1'),
+    (2, 2, 7, '2024-03-02', NULL, 'Title 2'),
+    (3, 2, 8, '2024-03-02', NULL, 'Title 3'),
+    (4, 2, 9, '2024-03-02', NULL, 'Title 4'),
+    (5, 2, 10, '2024-03-02', NULL, 'Title 5');
 
--- Inserting into DateCriteria table
 INSERT INTO date_criteria (filter_id, type_id, comparison_operator_id, created_at, archived_at, value)
 VALUES
     (1, 3, 11, '2024-03-02', NULL, '2024-03-02 12:00:00'),

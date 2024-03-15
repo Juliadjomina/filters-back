@@ -1,19 +1,13 @@
 package test.assignment.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import lombok.SneakyThrows;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 import test.assignment.filters.dto.FilterRequestDto;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
-import test.assignment.filters.persistence.model.ComparisonOperator;
-import test.assignment.filters.persistence.model.CriteriaType;
-import test.assignment.filters.persistence.model.Filter;
-import test.assignment.filters.persistence.model.criteria.Criteria;
-import test.assignment.filters.persistence.model.criteria.NumberCriteria;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
+import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -22,12 +16,12 @@ import static org.flywaydb.core.internal.util.FileUtils.readResourceAsString;
 
 public class TestUtils {
 
-    public static NumberCriteriaDto getNumberCriteria() {
-        NumberCriteriaDto numberCriteriaDto = new NumberCriteriaDto();
-        numberCriteriaDto.setNumber(23L);
-        numberCriteriaDto.setCriteriaType("NUMBER");
-        numberCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to","NUMBER"));
-        return numberCriteriaDto;
+    public static AmountCriteriaDto getAmountCriteria() {
+        AmountCriteriaDto amountCriteriaDto = new AmountCriteriaDto();
+        amountCriteriaDto.setAmount(23L);
+        amountCriteriaDto.setCriteriaType("AMOUNT");
+        amountCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to","AMOUNT"));
+        return amountCriteriaDto;
     }
 
     public static DateCriteriaDto getDateCriteria() {
@@ -38,12 +32,12 @@ public class TestUtils {
         return dateCriteriaDto;
     }
 
-    public static TextCriteriaDto getTextCriteria() {
-        TextCriteriaDto textCriteriaDto = new TextCriteriaDto();
-        textCriteriaDto.setText("Test");
-        textCriteriaDto.setCriteriaType("TEXT");
-        textCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains","TEXT"));
-        return textCriteriaDto;
+    public static TitleCriteriaDto getTitleCriteria() {
+        TitleCriteriaDto titleCriteriaDto = new TitleCriteriaDto();
+        titleCriteriaDto.setTitle("Test");
+        titleCriteriaDto.setCriteriaType("TITLE");
+        titleCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains","TITLE"));
+        return titleCriteriaDto;
     }
 
     public static ComparisonOperatorDto getComparisonOperatorDto(String name, String type) {
@@ -63,28 +57,28 @@ public class TestUtils {
     public static DateCriteriaDto getDateCriteriaDto() {
         ComparisonOperatorDto comparisonOperatorDateDto = new ComparisonOperatorDto("Equals to", "DATE");
         DateCriteriaDto invalidDateCriteriaValue = new DateCriteriaDto();
-        invalidDateCriteriaValue.setCriteriaType("TEXT");
+        invalidDateCriteriaValue.setCriteriaType("TITLE");
         invalidDateCriteriaValue.setComparisonOperator(comparisonOperatorDateDto);
         invalidDateCriteriaValue.setDate(null);
         return invalidDateCriteriaValue;
     }
 
-    public static TextCriteriaDto getTextCriteriaDto() {
-        ComparisonOperatorDto comparisonOperatorTextDto = new ComparisonOperatorDto("Equals to", "TEXT");
-        TextCriteriaDto invalidTextCriteriaValue = new TextCriteriaDto();
-        invalidTextCriteriaValue.setCriteriaType("TEXT");
-        invalidTextCriteriaValue.setComparisonOperator(comparisonOperatorTextDto);
-        invalidTextCriteriaValue.setText(null);
-        return invalidTextCriteriaValue;
+    public static TitleCriteriaDto getTitleCriteriaDto() {
+        ComparisonOperatorDto comparisonOperatorTitleDto = new ComparisonOperatorDto("Equals to", "TITLE");
+        TitleCriteriaDto invalidTitleCriteriaValue = new TitleCriteriaDto();
+        invalidTitleCriteriaValue.setCriteriaType("TITLE");
+        invalidTitleCriteriaValue.setComparisonOperator(comparisonOperatorTitleDto);
+        invalidTitleCriteriaValue.setTitle(null);
+        return invalidTitleCriteriaValue;
     }
 
-    public static NumberCriteriaDto getNumberCriteriaDto() {
-        ComparisonOperatorDto comparisonOperatorNumberDto = new ComparisonOperatorDto("Equals to", "NUMBER");
-        NumberCriteriaDto invalidNumberCriteriaValue = new NumberCriteriaDto();
-        invalidNumberCriteriaValue.setCriteriaType("NUMBER");
-        invalidNumberCriteriaValue.setComparisonOperator(comparisonOperatorNumberDto);
-        invalidNumberCriteriaValue.setNumber(null);
-        return invalidNumberCriteriaValue;
+    public static AmountCriteriaDto getAmountCriteriaDto() {
+        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", "AMOUNT");
+        AmountCriteriaDto invalidAmountCriteriaValue = new AmountCriteriaDto();
+        invalidAmountCriteriaValue.setCriteriaType("AMOUNT");
+        invalidAmountCriteriaValue.setComparisonOperator(comparisonOperatorAmountDto);
+        invalidAmountCriteriaValue.setAmount(null);
+        return invalidAmountCriteriaValue;
     }
 
     @SneakyThrows

@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class NumberCriteriaDto extends CriteriaDto {
+public class AmountCriteriaDto extends CriteriaDto {
 
-    private Long number;
+    private Long amount;
 }

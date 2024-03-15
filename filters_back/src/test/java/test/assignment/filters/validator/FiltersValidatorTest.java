@@ -8,8 +8,8 @@ import test.assignment.filters.dto.ComparisonOperatorDto;
 import test.assignment.filters.dto.FilterRequestDto;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
+import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 
 import java.util.List;
@@ -26,31 +26,31 @@ class FiltersValidatorTest {
     private static Stream<Arguments> invalidComparisonOperatorArguments() {
         String randomString = random(256, true, false);
 
-        ComparisonOperatorDto operatorNameMissing = new ComparisonOperatorDto(null, "NUMBER");
-        ComparisonOperatorDto operatorNameTooLong = new ComparisonOperatorDto(randomString, "NUMBER");
+        ComparisonOperatorDto operatorNameMissing = new ComparisonOperatorDto(null, "AMOUNT");
+        ComparisonOperatorDto operatorNameTooLong = new ComparisonOperatorDto(randomString, "AMOUNT");
         ComparisonOperatorDto operatorWrongType = new ComparisonOperatorDto("test", "test");
 
         return Stream.of(
                 Arguments.of("operatorName invalid: null", operatorNameMissing),
                 Arguments.of(format("operatorName invalid: %s", randomString), operatorNameTooLong),
-                Arguments.of("comparison operator type should be number, text or date, but it is: test", operatorWrongType)
+                Arguments.of("comparison operator type should be amount, title or date, but it is: test", operatorWrongType)
         );
     }
 
     private static Stream<Arguments> invalidCriteriaArguments() {
-        ComparisonOperatorDto comparisonOperatorNumberDto = new ComparisonOperatorDto("Equals to", "NUMBER");
-        CriteriaDto invalidCriteriaType = new CriteriaDto("test", comparisonOperatorNumberDto);
+        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", "AMOUNT");
+        CriteriaDto invalidCriteriaType = new CriteriaDto("test", comparisonOperatorAmountDto);
 
-        NumberCriteriaDto invalidNumberCriteriaValue = getNumberCriteriaDto();
+        AmountCriteriaDto invalidAmountCriteriaValue = getAmountCriteriaDto();
 
-        TextCriteriaDto invalidTextCriteriaValue = getTextCriteriaDto();
+        TitleCriteriaDto invalidTitleCriteriaValue = getTitleCriteriaDto();
 
         DateCriteriaDto invalidDateCriteriaValue = getDateCriteriaDto();
 
         return Stream.of(
-                Arguments.of("criteria type should be number, text or date, but it is test", invalidCriteriaType),
-                Arguments.of("number criteria value can not be null", invalidNumberCriteriaValue),
-                Arguments.of("text criteria value can not be null", invalidTextCriteriaValue),
+                Arguments.of("criteria type should be amount, title or date, but it is test", invalidCriteriaType),
+                Arguments.of("amount criteria value can not be null", invalidAmountCriteriaValue),
+                Arguments.of("title criteria value can not be null", invalidTitleCriteriaValue),
                 Arguments.of("date criteria value can not be null", invalidDateCriteriaValue)
         );
     }

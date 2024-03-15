@@ -3,26 +3,26 @@ package test.assignment.filters.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
+import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 import test.assignment.filters.persistence.model.criteria.DateCriteria;
-import test.assignment.filters.persistence.model.criteria.NumberCriteria;
-import test.assignment.filters.persistence.model.criteria.TextCriteria;
+import test.assignment.filters.persistence.model.criteria.AmountCriteria;
+import test.assignment.filters.persistence.model.criteria.TitleCriteria;
 
 @Mapper(componentModel = "spring")
 public interface CriteriaMapper {
 
-    TextCriteria toTextCriteria(TextCriteriaDto textCriteriadto);
+    TitleCriteria toTitleCriteria(TitleCriteriaDto titleCriteriadto);
 
-    NumberCriteria toNumberCriteria(NumberCriteriaDto numberCriteriadto);
+    AmountCriteria toAmountCriteria(AmountCriteriaDto amountCriteriadto);
 
     DateCriteria toDateCriteria(DateCriteriaDto dateCriteriadto);
 
-    @Mapping(target = "criteriaType", source = "textCriteria.type.type")
-    TextCriteriaDto toTextCriteriaDto(TextCriteria textCriteria);
+    @Mapping(target = "criteriaType", source = "titleCriteria.type.type")
+    TitleCriteriaDto toTitleCriteriaDto(TitleCriteria titleCriteria);
 
-    @Mapping(target = "criteriaType", source = "numberCriteria.type.type")
-    NumberCriteriaDto toNumberCriteriaDto(NumberCriteria numberCriteria);
+    @Mapping(target = "criteriaType", source = "amountCriteria.type.type")
+    AmountCriteriaDto toAmountCriteriaDto(AmountCriteria amountCriteria);
 
     @Mapping(target = "criteriaType", source = "dateCriteria.type.type")
     DateCriteriaDto toDateCriteriaDto(DateCriteria dateCriteria);

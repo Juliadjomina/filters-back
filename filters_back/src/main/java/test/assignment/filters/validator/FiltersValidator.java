@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 import test.assignment.filters.dto.FilterRequestDto;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.NumberCriteriaDto;
-import test.assignment.filters.dto.criteria.TextCriteriaDto;
+import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 
 import java.util.ArrayList;
@@ -53,10 +53,10 @@ public class FiltersValidator {
 
     public static void isValidCriteriaValue(CriteriaDto criteria) {
         switch (criteria) {
-            case NumberCriteriaDto numberCriteriaDto ->
-                    validateNonNull(numberCriteriaDto.getNumber(), "number criteria value");
+            case AmountCriteriaDto amountCriteriaDto ->
+                    validateNonNull(amountCriteriaDto.getAmount(), "amount criteria value");
             case DateCriteriaDto dateCriteriaDto -> validateNonNull(dateCriteriaDto.getDate(), "date criteria value");
-            case TextCriteriaDto textCriteriaDto -> validateNonNull(textCriteriaDto.getText(), "text criteria value");
+            case TitleCriteriaDto titleCriteriaDto -> validateNonNull(titleCriteriaDto.getTitle(), "title criteria value");
             default ->
                     throw new IllegalArgumentException("Unknown criteria type: " + criteria.getClass().getSimpleName());
         }
@@ -68,13 +68,13 @@ public class FiltersValidator {
             throwFiltersServiceError(errors);
         }
         if (!TYPE.contains(comparisonOperatorDto.getOperatorType())) {
-            throw new FiltersServiceRestClientException(format("comparison operator type should be number, text or date, but it is: %s", comparisonOperatorDto.getOperatorType()), ERROR_WRONG_COMPARISON_OPERATOR_TYPE);
+            throw new FiltersServiceRestClientException(format("comparison operator type should be amount, title or date, but it is: %s", comparisonOperatorDto.getOperatorType()), ERROR_WRONG_COMPARISON_OPERATOR_TYPE);
         }
     }
 
     public static void isValidCriteria(CriteriaDto criteria) {
         if (!TYPE.contains(criteria.getCriteriaType())) {
-            throw new FiltersServiceRestClientException(format("criteria type should be number, text or date, but it is %s", criteria.getCriteriaType()), ERROR_WRONG_CRITERIA_TYPE);
+            throw new FiltersServiceRestClientException(format("criteria type should be amount, title or date, but it is %s", criteria.getCriteriaType()), ERROR_WRONG_CRITERIA_TYPE);
         }
         isValidCriteriaValue(criteria);
         isValidComparisonOperatorDto(criteria.getComparisonOperator());
@@ -88,9 +88,9 @@ public class FiltersValidator {
 
     private static String getErrorCode(String fieldName) {
         return switch (fieldName) {
-            case "number criteria value" -> ERROR_NUMBER_CRITERIA_VALUE_NULL;
+            case "amount criteria value" -> ERROR_AMOUNT_CRITERIA_VALUE_NULL;
             case "date criteria value" -> ERROR_DATE_CRITERIA_VALUE_NULL;
-            case "text criteria value" -> ERROR_TEXT_CRITERIA_VALUE_NULL;
+            case "title criteria value" -> ERROR_TITLE_CRITERIA_VALUE_NULL;
             default -> "";
         };
     }

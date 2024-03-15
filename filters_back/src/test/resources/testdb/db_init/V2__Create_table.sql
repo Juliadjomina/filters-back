@@ -17,11 +17,11 @@ CREATE TABLE criteria (
 );
 
 
-CREATE TABLE number_criteria (
+CREATE TABLE amount_criteria (
                           value INT NOT NULL
 ) INHERITS (Criteria);
 
-CREATE TABLE text_criteria (
+CREATE TABLE title_criteria (
                                 value VARCHAR(255)  NOT NULL
 ) INHERITS (Criteria);
 

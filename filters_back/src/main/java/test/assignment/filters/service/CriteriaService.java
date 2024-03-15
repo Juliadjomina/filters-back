@@ -9,8 +9,8 @@ import test.assignment.filters.persistence.model.Filter;
 import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.repository.CriteriaRepository;
 import test.assignment.filters.persistence.repository.DateCriteriaRepository;
-import test.assignment.filters.persistence.repository.NumberCriteriaRepository;
-import test.assignment.filters.persistence.repository.TextCriteriaRepository;
+import test.assignment.filters.persistence.repository.AmountCriteriaRepository;
+import test.assignment.filters.persistence.repository.TitleCriteriaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +20,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CriteriaService {
 
-    private final TextCriteriaRepository textCriteriaRepository;
+    private final TitleCriteriaRepository titleCriteriaRepository;
     private final DateCriteriaRepository dateCriteriaRepository;
-    private final NumberCriteriaRepository numberCriteriaRepository;
+    private final AmountCriteriaRepository amountCriteriaRepository;
     private final CriteriaRepository criteriaRepository;
     private final CriteriaCustomMapper criteriaCustomMapper;
 
     public List<CriteriaDto> getAllCriterias(Long id) {
         List<Criteria> criterias = new ArrayList<>();
-        criterias.addAll(textCriteriaRepository.getDateCriteria(id));
+        criterias.addAll(titleCriteriaRepository.getDateCriteria(id));
         criterias.addAll(dateCriteriaRepository.getDateCriteria(id));
-        criterias.addAll(numberCriteriaRepository.getDateCriteria(id));
+        criterias.addAll(amountCriteriaRepository.getDateCriteria(id));
         return criteriaCustomMapper.mapToDtoList(criterias);
     }
 

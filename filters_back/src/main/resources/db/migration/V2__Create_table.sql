@@ -1,11 +1,10 @@
-CREATE TABLE criteria_type
-(
+CREATE TABLE criteria_type (
     id   BIGSERIAL PRIMARY KEY,
     type TEXT
 );
 
 INSERT INTO criteria_type (type)
-VALUES ('NUMBER'), ('TEXT'), ('DATE');
+VALUES ('AMOUNT'), ('TITLE'), ('DATE');
 
 CREATE TABLE criteria (
                           id BIGSERIAL PRIMARY KEY,
@@ -20,11 +19,11 @@ CREATE TABLE criteria (
 );
 
 
-CREATE TABLE number_criteria (
+CREATE TABLE amount_criteria (
                           value INT NOT NULL
 ) INHERITS (Criteria);
 
-CREATE TABLE text_criteria (
+CREATE TABLE title_criteria (
                                 value VARCHAR(255)  NOT NULL
 ) INHERITS (Criteria);
 

@@ -1,15 +1,15 @@
 INSERT INTO comparison_operator (operator_name, operator_type)
-VALUES ('Equal to', 'NUMBER'),
-       ('Not equal to', 'NUMBER'),
-       ('Greater than', 'NUMBER'),
-       ('Greater than or equal to', 'NUMBER'),
-       ('Less than', 'NUMBER'),
-       ('Less than or equal to', 'NUMBER'),
+VALUES ('Equal to', 'AMOUNT'),
+       ('Not equal to', 'AMOUNT'),
+       ('Greater than', 'AMOUNT'),
+       ('Greater than or equal to', 'AMOUNT'),
+       ('Less than', 'AMOUNT'),
+       ('Less than or equal to', 'AMOUNT'),
 
-       ('Contains', 'TEXT'),
-       ('Does not contain', 'TEXT'),
-       ('Starts with', 'TEXT'),
-       ('Ends with', 'TEXT'),
+       ('Contains', 'TITLE'),
+       ('Does not contain', 'TITLE'),
+       ('Starts with', 'TITLE'),
+       ('Ends with', 'TITLE'),
 
        ('Equal to', 'DATE'),
        ('Not equal to', 'DATE'),
@@ -19,4 +19,4 @@ VALUES ('Equal to', 'NUMBER'),
        ('On or after', 'DATE');
 
 INSERT INTO criteria_type (type)
-VALUES ('NUMBER'), ('TEXT'), ('DATE');
+VALUES ('AMOUNT'), ('TITLE'), ('DATE');
