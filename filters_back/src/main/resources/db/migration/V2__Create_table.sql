@@ -7,7 +7,6 @@ CREATE TABLE criteria_type
 INSERT INTO criteria_type (type)
 VALUES ('NUMBER'), ('TEXT'), ('DATE');
 
-
 CREATE TABLE criteria (
                           id BIGSERIAL PRIMARY KEY,
                           filter_id BIGINT NOT NULL,

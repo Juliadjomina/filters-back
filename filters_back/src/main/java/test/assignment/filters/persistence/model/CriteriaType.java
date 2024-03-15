@@ -1,8 +1,9 @@
 package test.assignment.filters.persistence.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-import test.assignment.filters.persistence.model.enums.CriteriaTypeEnum;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity

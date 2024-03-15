@@ -2,14 +2,15 @@ package test.assignment.filters.dto.criteria;
 
 import lombok.*;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class DateCriteriaDto extends CriteriaDto {
 
-    private Date date;
+    private OffsetDateTime date;
 }
 

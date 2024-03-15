@@ -1,7 +1,14 @@
 package test.assignment.filters.dto;
 
-public record FilterDto(
-        Long id,
-        String filterName
-) {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public class FilterDto {
+
+    private Long id;
+    private String filterName;
 }

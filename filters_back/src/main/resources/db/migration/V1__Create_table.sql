@@ -1,7 +1,7 @@
 CREATE TABLE comparison_operator
 (
     id            BIGSERIAL PRIMARY KEY,
-    operator_name TEXT,
+    operator_name VARCHAR(255),
     operator_type TEXT
 );
 

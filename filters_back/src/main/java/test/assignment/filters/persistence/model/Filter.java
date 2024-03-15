@@ -1,7 +1,9 @@
 package test.assignment.filters.persistence.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
@@ -23,6 +25,6 @@ public class Filter {
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime cratedAt;
 
-    @Column(name = "archived_at", nullable = false)
+    @Column(name = "archived_at")
     private OffsetDateTime archivedAt;
 }

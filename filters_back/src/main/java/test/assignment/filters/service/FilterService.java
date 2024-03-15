@@ -1,16 +1,21 @@
 package test.assignment.filters.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import test.assignment.filters.dto.FilterDto;
 import test.assignment.filters.dto.FilterRequestDto;
+import test.assignment.filters.dto.FilterResponseDto;
+import test.assignment.filters.mapper.CriteriaCustomMapper;
 import test.assignment.filters.mapper.FilterMapper;
 import test.assignment.filters.persistence.model.Filter;
+import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.repository.FilterRepository;
 
 import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.List;
+
+import static test.assignment.filters.validator.FiltersValidator.validateFilterRequestDto;
 
 @Service
 @RequiredArgsConstructor
@@ -18,24 +23,28 @@ public class FilterService {
 
     private final FilterRepository filterRepository;
     private final CriteriaService criteriaService;
-
     private final FilterMapper filterMapper;
+    private final CriteriaCustomMapper criteriaCustomMapper;
 
     public List<FilterDto> getAllFilters() {
         final List<Filter> filters = filterRepository.findAll();
         return filterMapper.filtersToFiltersDto(filters);
     }
 
-    public void deleteFilter(Long id) {
-        filterRepository.deleteById(id);
+    @Transactional
+    public FilterResponseDto saveFilter(final FilterRequestDto filterRequestDto) {
+        validateFilterRequestDto(filterRequestDto);
+        Filter filter = filterMapper.filterRequestDtoToFilter(filterRequestDto);
+        filter.setCratedAt(OffsetDateTime.now());
+        Filter savedFilter = filterRepository.save(filter);
+        List<Criteria> savedCriteriaList = criteriaService.saveCriteriaList(filter, filterRequestDto.getCriteriaList());
+        return mapCreatedFilterAndCriteriasToDto(savedFilter, savedCriteriaList);
     }
 
-    public Long saveFilter(final FilterRequestDto filterRequestDto) {
-        Filter filter = filterMapper.filterRequestDtoToFilter(filterRequestDto);
-        // TODO any other opportunity to
-        filter.setCratedAt(OffsetDateTime.now());
-        filterRepository.save(filter);
-        criteriaService.saveCriteriaList(filter, filterRequestDto.criteriaList());
-        return null;
+    private FilterResponseDto mapCreatedFilterAndCriteriasToDto(Filter filter, List<Criteria> criteria) {
+        FilterResponseDto filterResponseDto = new FilterResponseDto();
+        filterResponseDto.setFilterName(filter.getFilterName());
+        filterResponseDto.setCriteriaList(criteriaCustomMapper.mapToDtoList(criteria));
+        return filterResponseDto;
     }
 }

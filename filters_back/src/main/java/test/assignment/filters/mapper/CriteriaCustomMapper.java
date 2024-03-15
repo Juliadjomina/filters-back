@@ -6,6 +6,7 @@ import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
 import test.assignment.filters.dto.criteria.NumberCriteriaDto;
 import test.assignment.filters.dto.criteria.TextCriteriaDto;
+import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
@@ -16,12 +17,12 @@ import test.assignment.filters.persistence.model.criteria.TextCriteria;
 import test.assignment.filters.persistence.repository.ComparisonOperatorRepository;
 import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 
-import javax.swing.*;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static test.assignment.filters.error.ErrorConstants.ERROR_WRONG_CRITERIA_TYPE;
 
 @Component
 @RequiredArgsConstructor
@@ -40,12 +41,12 @@ public class CriteriaCustomMapper {
     }
 
     public CriteriaDto mapToDto(Criteria criteria) {
-        // TODO add exception. No such criteriaType
         return switch (criteria) {
             case NumberCriteria numberCriteria -> criteriaMapper.toNumberCriteriaDto(numberCriteria);
             case TextCriteria textCriteria -> criteriaMapper.toTextCriteriaDto(textCriteria);
             case DateCriteria dateCriteria -> criteriaMapper.toDateCriteriaDto(dateCriteria);
-            case null, default -> null;
+            case null, default ->
+                    throw new FiltersServiceRestClientException("criteria type can be number, text or date", ERROR_WRONG_CRITERIA_TYPE);
         };
     }
 
@@ -54,9 +55,9 @@ public class CriteriaCustomMapper {
         return criteriaDtoList.stream()
                 .map(m -> {
                     Criteria criteria = mapToCriteria(m);
-                    ComparisonOperator comparisonOperator = comparisonOperatorRepository.getComparisonOperatorByOperatorNameAndOperatorType(m.getComparisonOperator().operatorName(), m.getComparisonOperator().operatorType());
-                    criteria.setComparisonOperator(comparisonOperator);
+                    ComparisonOperator comparisonOperator = comparisonOperatorRepository.getComparisonOperatorByOperatorNameAndOperatorType(m.getComparisonOperator().getOperatorName(), m.getComparisonOperator().getOperatorType());
                     CriteriaType criteriaType = criteriaTypeRepository.getCriteriaTypeByType(m.getCriteriaType());
+                    criteria.setComparisonOperator(comparisonOperator);
                     criteria.setType(criteriaType);
                     criteria.setCreatedAt(OffsetDateTime.now());
                     criteria.setFilter(filter);

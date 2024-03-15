@@ -1,14 +1,17 @@
 package test.assignment.filters.dto.criteria;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         property = "criteriaType",
@@ -21,8 +24,6 @@ import test.assignment.filters.dto.ComparisonOperatorDto;
 })
 public class CriteriaDto {
 
-    // TODO to check whether it works without this annotation
     private String criteriaType;
-
     private ComparisonOperatorDto comparisonOperator;
 }

@@ -1,13 +1,13 @@
 package test.assignment.filters.persistence.model.criteria;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Data
 @Entity
@@ -17,6 +17,6 @@ import java.util.Date;
 public class DateCriteria extends Criteria {
 
     @Column(name = "value")
-    private LocalDateTime date;
+    private OffsetDateTime date;
 }
 

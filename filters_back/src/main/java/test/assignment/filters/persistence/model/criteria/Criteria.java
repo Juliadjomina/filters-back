@@ -1,15 +1,14 @@
 package test.assignment.filters.persistence.model.criteria;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.context.annotation.Primary;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.util.Date;
 
 
 @Data

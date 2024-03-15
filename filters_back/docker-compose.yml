@@ -1,6 +1,5 @@
 #docker compose version
 version: '3.8'
-
 services:
   filters-db:
     image: postgres:latest
@@ -13,6 +12,16 @@ services:
       - postgres-filters-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  filters-db-test:
+    image: postgres:latest
+    container_name: filters_db_test
+    environment:
+      - POSTGRES_DB=filters_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - "5433:5432"
 
 volumes:
   postgres-filters-data:

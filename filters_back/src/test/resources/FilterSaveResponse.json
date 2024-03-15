@@ -1,0 +1,21 @@
+{
+  "filterName": "ffff",
+  "criteriaList": [
+    {
+      "criteriaType": "NUMBER",
+      "comparisonOperator": {
+        "operatorName": "Less than",
+        "operatorType": "NUMBER"
+      },
+      "number": 54
+    },
+    {
+      "criteriaType": "TEXT",
+      "comparisonOperator": {
+        "operatorName": "Starts with",
+        "operatorType": "TEXT"
+      },
+      "text": "fdbdfb"
+    }
+  ]
+}
