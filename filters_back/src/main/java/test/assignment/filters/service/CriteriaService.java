@@ -26,12 +26,13 @@ public class CriteriaService {
     private final CriteriaRepository criteriaRepository;
     private final CriteriaCustomMapper criteriaCustomMapper;
 
-    public List<CriteriaDto> getAllCriterias(Long id) {
-        List<Criteria> criterias = new ArrayList<>();
-        criterias.addAll(titleCriteriaRepository.getDateCriteria(id));
-        criterias.addAll(dateCriteriaRepository.getDateCriteria(id));
-        criterias.addAll(amountCriteriaRepository.getDateCriteria(id));
-        return criteriaCustomMapper.mapToDtoList(criterias);
+    public List<CriteriaDto> getAllCriteria(Long id) {
+        log.info("CriteriaService.getAllCriteria() | all comparison operators request");
+        List<Criteria> criteria = new ArrayList<>();
+        criteria.addAll(titleCriteriaRepository.getDateCriteria(id));
+        criteria.addAll(dateCriteriaRepository.getDateCriteria(id));
+        criteria.addAll(amountCriteriaRepository.getDateCriteria(id));
+        return criteriaCustomMapper.mapToDtoList(criteria);
     }
 
     public List<Criteria> saveCriteriaList(Filter filter, List<CriteriaDto> criteriaList) {

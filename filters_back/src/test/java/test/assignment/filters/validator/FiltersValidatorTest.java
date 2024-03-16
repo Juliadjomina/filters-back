@@ -19,6 +19,7 @@ import static java.lang.String.format;
 import static org.apache.commons.lang3.RandomStringUtils.random;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static test.assignment.filters.TestUtils.*;
+import static test.assignment.filters.helper.FilterConstants.AMOUNT;
 import static test.assignment.filters.validator.FiltersValidator.*;
 
 class FiltersValidatorTest {
@@ -26,8 +27,8 @@ class FiltersValidatorTest {
     private static Stream<Arguments> invalidComparisonOperatorArguments() {
         String randomString = random(256, true, false);
 
-        ComparisonOperatorDto operatorNameMissing = new ComparisonOperatorDto(null, "AMOUNT");
-        ComparisonOperatorDto operatorNameTooLong = new ComparisonOperatorDto(randomString, "AMOUNT");
+        ComparisonOperatorDto operatorNameMissing = new ComparisonOperatorDto(null, AMOUNT);
+        ComparisonOperatorDto operatorNameTooLong = new ComparisonOperatorDto(randomString, AMOUNT);
         ComparisonOperatorDto operatorWrongType = new ComparisonOperatorDto("test", "test");
 
         return Stream.of(
@@ -38,7 +39,7 @@ class FiltersValidatorTest {
     }
 
     private static Stream<Arguments> invalidCriteriaArguments() {
-        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", "AMOUNT");
+        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", AMOUNT);
         CriteriaDto invalidCriteriaType = new CriteriaDto("test", comparisonOperatorAmountDto);
 
         AmountCriteriaDto invalidAmountCriteriaValue = getAmountCriteriaDto();

@@ -51,10 +51,10 @@ class FilterServiceTest extends IntegrationTest {
         List<FilterDto> filterDtos = filterService.getAllFilters();
         assertThat(filterDtos).hasSize(1);
 
-        List<Criteria> criterias = new ArrayList<>();
-        criterias.addAll(titleCriteriaRepository.findAll());
-        criterias.addAll(dateCriteriaRepository.findAll());
-        criterias.addAll(amountCriteriaRepository.findAll());
-        assertThat(criterias).hasSize(3);
+        List<Criteria> criteria = new ArrayList<>();
+        criteria.addAll(titleCriteriaRepository.findAll());
+        criteria.addAll(dateCriteriaRepository.findAll());
+        criteria.addAll(amountCriteriaRepository.findAll());
+        assertThat(criteria).hasSize(3);
     }
 }

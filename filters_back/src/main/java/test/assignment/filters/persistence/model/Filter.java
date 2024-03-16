@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.time.OffsetDateTime;
 public class Filter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

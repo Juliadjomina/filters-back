@@ -13,30 +13,31 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 import static org.flywaydb.core.internal.util.FileUtils.readResourceAsString;
+import static test.assignment.filters.helper.FilterConstants.*;
 
 public class TestUtils {
 
     public static AmountCriteriaDto getAmountCriteria() {
         AmountCriteriaDto amountCriteriaDto = new AmountCriteriaDto();
         amountCriteriaDto.setAmount(23L);
-        amountCriteriaDto.setCriteriaType("AMOUNT");
-        amountCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to","AMOUNT"));
+        amountCriteriaDto.setCriteriaType(AMOUNT);
+        amountCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to",AMOUNT));
         return amountCriteriaDto;
     }
 
     public static DateCriteriaDto getDateCriteria() {
         DateCriteriaDto dateCriteriaDto = new DateCriteriaDto();
         dateCriteriaDto.setDate(OffsetDateTime.now());
-        dateCriteriaDto.setCriteriaType("DATE");
-        dateCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to","DATE"));
+        dateCriteriaDto.setCriteriaType(DATE);
+        dateCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to",DATE));
         return dateCriteriaDto;
     }
 
     public static TitleCriteriaDto getTitleCriteria() {
         TitleCriteriaDto titleCriteriaDto = new TitleCriteriaDto();
         titleCriteriaDto.setTitle("Test");
-        titleCriteriaDto.setCriteriaType("TITLE");
-        titleCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains","TITLE"));
+        titleCriteriaDto.setCriteriaType(TITLE);
+        titleCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains",TITLE));
         return titleCriteriaDto;
     }
 
@@ -55,27 +56,27 @@ public class TestUtils {
     }
 
     public static DateCriteriaDto getDateCriteriaDto() {
-        ComparisonOperatorDto comparisonOperatorDateDto = new ComparisonOperatorDto("Equals to", "DATE");
+        ComparisonOperatorDto comparisonOperatorDateDto = new ComparisonOperatorDto("Equals to", DATE);
         DateCriteriaDto invalidDateCriteriaValue = new DateCriteriaDto();
-        invalidDateCriteriaValue.setCriteriaType("TITLE");
+        invalidDateCriteriaValue.setCriteriaType(TITLE);
         invalidDateCriteriaValue.setComparisonOperator(comparisonOperatorDateDto);
         invalidDateCriteriaValue.setDate(null);
         return invalidDateCriteriaValue;
     }
 
     public static TitleCriteriaDto getTitleCriteriaDto() {
-        ComparisonOperatorDto comparisonOperatorTitleDto = new ComparisonOperatorDto("Equals to", "TITLE");
+        ComparisonOperatorDto comparisonOperatorTitleDto = new ComparisonOperatorDto("Equals to", TITLE);
         TitleCriteriaDto invalidTitleCriteriaValue = new TitleCriteriaDto();
-        invalidTitleCriteriaValue.setCriteriaType("TITLE");
+        invalidTitleCriteriaValue.setCriteriaType(TITLE);
         invalidTitleCriteriaValue.setComparisonOperator(comparisonOperatorTitleDto);
         invalidTitleCriteriaValue.setTitle(null);
         return invalidTitleCriteriaValue;
     }
 
     public static AmountCriteriaDto getAmountCriteriaDto() {
-        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", "AMOUNT");
+        ComparisonOperatorDto comparisonOperatorAmountDto = new ComparisonOperatorDto("Equals to", AMOUNT);
         AmountCriteriaDto invalidAmountCriteriaValue = new AmountCriteriaDto();
-        invalidAmountCriteriaValue.setCriteriaType("AMOUNT");
+        invalidAmountCriteriaValue.setCriteriaType(AMOUNT);
         invalidAmountCriteriaValue.setComparisonOperator(comparisonOperatorAmountDto);
         invalidAmountCriteriaValue.setAmount(null);
         return invalidAmountCriteriaValue;

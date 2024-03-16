@@ -29,6 +29,7 @@ public class FiltersValidator {
 
     private static final Validator validator;
     private static final String ERROR_MSG_TEMPLATE = "%s invalid: %s";
+    private static final String ERROR_MSG_LOG_TEMPLATE = "{} invalid: {}";
 
     static {
         try (ValidatorFactory validatorFactory = buildDefaultValidatorFactory()) {
@@ -101,6 +102,6 @@ public class FiltersValidator {
     }
 
     private static <T> void logErrors(List<ConstraintViolation<T>> errors) {
-        errors.forEach(e -> log.error(format(ERROR_MSG_TEMPLATE, e.getPropertyPath(), e.getInvalidValue())));
+        errors.forEach(e -> log.error(ERROR_MSG_LOG_TEMPLATE, e.getPropertyPath(), e.getInvalidValue()));
     }
 }

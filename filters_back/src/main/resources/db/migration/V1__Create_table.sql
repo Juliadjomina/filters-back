@@ -25,12 +25,10 @@ VALUES ('Equal to', 'AMOUNT'),
        ('On or before', 'DATE'),
        ('On or after', 'DATE');
 
-
-CREATE TABLE filter (
-                         id BIGSERIAL PRIMARY KEY,
-                         filter_name VARCHAR(255) NOT NULL,
-                         created_at DATE NOT NULL,
-                         archived_at DATE
+CREATE TABLE filter
+(
+    id          BIGSERIAL PRIMARY KEY,
+    filter_name VARCHAR(255) NOT NULL,
+    created_at  DATE         NOT NULL,
+    archived_at DATE
 );
-
-

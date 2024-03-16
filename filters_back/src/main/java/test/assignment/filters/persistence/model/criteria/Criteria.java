@@ -10,6 +10,8 @@ import test.assignment.filters.persistence.model.Filter;
 
 import java.time.OffsetDateTime;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 
 @Data
 @MappedSuperclass
@@ -22,15 +24,15 @@ public abstract class Criteria {
     @Column(name = "id")
     private int criteriaId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "filter_id")
     private Filter filter;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "type_id")
     private CriteriaType type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "comparison_operator_id")
     private ComparisonOperator comparisonOperator;
 

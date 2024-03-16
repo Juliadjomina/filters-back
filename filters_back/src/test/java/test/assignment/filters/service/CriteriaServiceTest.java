@@ -24,7 +24,7 @@ class CriteriaServiceTest extends IntegrationTest {
     @Sql(scripts = "classpath:testdb/clean/cleanTestDb.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void testGetAllCriteriaByFilterId() {
         Long filterId = filterService.getAllFilters().getFirst().getId();
-        List<CriteriaDto> criteriaDtos = criteriaService.getAllCriterias(filterId);
+        List<CriteriaDto> criteriaDtos = criteriaService.getAllCriteria(filterId);
         assertThat(criteriaDtos).hasSize(3);
     }
 }
