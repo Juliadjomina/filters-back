@@ -1,5 +1,6 @@
 {
   "filterName": "ffff",
+  "selectionName": "Selector 1",
   "criteriaList": [
     {
       "criteriaType": "AMOUNT",

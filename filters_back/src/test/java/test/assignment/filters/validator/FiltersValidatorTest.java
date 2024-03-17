@@ -59,10 +59,10 @@ class FiltersValidatorTest {
     private static Stream<Arguments> invalidFilterRequestDtoArguments() {
         String randomString = random(256, true, false);
 
-        FilterRequestDto operatorNameMissing = new FilterRequestDto(null, List.of());
-        FilterRequestDto operatorNameTooLong = new FilterRequestDto(randomString, List.of());
-        FilterRequestDto criteriaMissing = new FilterRequestDto("Filter name", null);
-        FilterRequestDto criteriaEmpty = new FilterRequestDto("Filter name", List.of());
+        FilterRequestDto operatorNameMissing = new FilterRequestDto(null, "Selector 1", List.of());
+        FilterRequestDto operatorNameTooLong = new FilterRequestDto(randomString, "Selector 1", List.of());
+        FilterRequestDto criteriaMissing = new FilterRequestDto("Filter name", "Selector 1", null);
+        FilterRequestDto criteriaEmpty = new FilterRequestDto("Filter name","Selector 1", List.of());
 
         return Stream.of(
                 Arguments.of("filterName invalid: null", operatorNameMissing),

@@ -34,7 +34,7 @@ public class FilterService {
     public List<FilterDto> getAllFilters() {
         log.info("FilterService.getAllFilters() | all filters request");
         final List<Filter> filters = filterRepository.findAll();
-        return filterMapper.filtersToFiltersDto(filters);
+        return filterMapper.filtersToFiltersDtos(filters);
     }
 
     @Transactional

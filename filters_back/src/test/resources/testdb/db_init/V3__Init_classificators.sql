@@ -20,3 +20,8 @@ VALUES ('Equal to', 'AMOUNT'),
 
 INSERT INTO criteria_type (type)
 VALUES ('AMOUNT'), ('TITLE'), ('DATE');
+
+INSERT INTO selection (name)
+VALUES ('Select 1'),
+       ('Select 2'),
+       ('Select 3');

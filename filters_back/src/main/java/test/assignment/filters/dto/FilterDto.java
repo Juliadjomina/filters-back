@@ -11,4 +11,5 @@ public class FilterDto {
 
     private Long id;
     private String filterName;
+    private String selectionName;
 }

@@ -29,3 +29,4 @@ CREATE TABLE title_criteria (
 CREATE TABLE date_criteria (
                               value TIMESTAMP NOT NULL
 ) INHERITS (Criteria);
+
