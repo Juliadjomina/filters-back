@@ -21,7 +21,7 @@
 		<org.projectlombok.version>1.18.30</org.projectlombok.version>
 		<org.mapstruct.version>1.6.0.Beta1</org.mapstruct.version>
 		<io.swagger.core.v3.version>2.2.20</io.swagger.core.v3.version>
-		<org.springdoc.version>2.4.0</org.springdoc.version>
+		<org.springdoc.version>2.2.0</org.springdoc.version>
 		<org.projectlombok.mapstruct.binding.version>0.2.0</org.projectlombok.mapstruct.binding.version>
 		<org.apache.maven.plugins.version>3.11.0</org.apache.maven.plugins.version>
 	</properties>
