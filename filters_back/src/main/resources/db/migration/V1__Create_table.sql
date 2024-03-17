@@ -2,7 +2,7 @@ CREATE TABLE comparison_operator
 (
     id            BIGSERIAL PRIMARY KEY,
     operator_name VARCHAR(255),
-    operator_type TEXT
+    operator_type  VARCHAR
 );
 
 INSERT INTO comparison_operator (operator_name, operator_type)
@@ -25,10 +25,25 @@ VALUES ('Equal to', 'AMOUNT'),
        ('On or before', 'DATE'),
        ('On or after', 'DATE');
 
-CREATE TABLE filter
+CREATE TABLE criteria_type
 (
-    id          BIGSERIAL PRIMARY KEY,
-    filter_name VARCHAR(255) NOT NULL,
-    created_at  DATE         NOT NULL,
-    archived_at DATE
+    id   BIGSERIAL PRIMARY KEY,
+    type TEXT
 );
+
+INSERT INTO criteria_type (type)
+VALUES ('AMOUNT'),
+       ('TITLE'),
+       ('DATE');
+
+
+CREATE TABLE selection
+(
+    id   BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+INSERT INTO selection (name)
+VALUES ('Select 1'),
+       ('Select 2'),
+       ('Select 3');

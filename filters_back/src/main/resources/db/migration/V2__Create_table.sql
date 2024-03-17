@@ -1,13 +1,12 @@
-CREATE TABLE criteria_type
+CREATE TABLE filter
 (
-    id   BIGSERIAL PRIMARY KEY,
-    type TEXT
+    id           BIGSERIAL PRIMARY KEY,
+    filter_name  VARCHAR(255) NOT NULL,
+    created_at   DATE         NOT NULL,
+    archived_at  DATE,
+    selection_id BIGINT,
+    FOREIGN KEY (selection_id) REFERENCES selection (id)
 );
-
-INSERT INTO criteria_type (type)
-VALUES ('AMOUNT'),
-       ('TITLE'),
-       ('DATE');
 
 CREATE TABLE criteria
 (

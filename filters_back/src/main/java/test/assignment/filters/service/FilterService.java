@@ -10,8 +10,10 @@ import test.assignment.filters.dto.FilterResponseDto;
 import test.assignment.filters.mapper.CriteriaCustomMapper;
 import test.assignment.filters.mapper.FilterMapper;
 import test.assignment.filters.persistence.model.Filter;
+import test.assignment.filters.persistence.model.Selection;
 import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.repository.FilterRepository;
+import test.assignment.filters.persistence.repository.SelectionRepository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -27,6 +29,7 @@ public class FilterService {
     private final CriteriaService criteriaService;
     private final FilterMapper filterMapper;
     private final CriteriaCustomMapper criteriaCustomMapper;
+    private final SelectionRepository selectionRepository;
 
     public List<FilterDto> getAllFilters() {
         log.info("FilterService.getAllFilters() | all filters request");
@@ -38,10 +41,12 @@ public class FilterService {
     public FilterResponseDto saveFilter(final FilterRequestDto filterRequestDto) {
         log.info("FilterService.saveFilter() | save filter with criteria request");
         validateFilterRequestDto(filterRequestDto);
-        Filter filter = filterMapper.filterRequestDtoToFilter(filterRequestDto);
-        filter.setCratedAt(OffsetDateTime.now());
-        Filter savedFilter = filterRepository.save(filter);
-        List<Criteria> savedCriteriaList = criteriaService.saveCriteriaList(filter, filterRequestDto.getCriteriaList());
+        Filter filterToSave = filterMapper.filterRequestDtoToFilter(filterRequestDto);
+        Selection selection = selectionRepository.getSelectionByName(filterRequestDto.getSelectionName());
+        filterToSave.setCratedAt(OffsetDateTime.now());
+        filterToSave.setSelection(selection);
+        Filter savedFilter = filterRepository.save(filterToSave);
+        List<Criteria> savedCriteriaList = criteriaService.saveCriteriaList(filterToSave, filterRequestDto.getCriteriaList());
         return mapCreatedFilterAndCriteriaToDto(savedFilter, savedCriteriaList);
     }
 

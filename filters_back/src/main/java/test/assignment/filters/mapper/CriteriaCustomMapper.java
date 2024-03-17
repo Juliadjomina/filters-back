@@ -10,12 +10,14 @@ import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
+import test.assignment.filters.persistence.model.Selection;
 import test.assignment.filters.persistence.model.criteria.Criteria;
 import test.assignment.filters.persistence.model.criteria.DateCriteria;
 import test.assignment.filters.persistence.model.criteria.AmountCriteria;
 import test.assignment.filters.persistence.model.criteria.TitleCriteria;
 import test.assignment.filters.persistence.repository.ComparisonOperatorRepository;
 import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
+import test.assignment.filters.persistence.repository.SelectionRepository;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class CriteriaCustomMapper {
     private final CriteriaMapper criteriaMapper;
     private final ComparisonOperatorRepository comparisonOperatorRepository;
     private final CriteriaTypeRepository criteriaTypeRepository;
+    private final SelectionRepository selectionRepository;
 
     public List<CriteriaDto> mapToDtoList(List<Criteria> criteriaList) {
         List<CriteriaDto> dtoList = new ArrayList<>();

@@ -2,11 +2,17 @@ package test.assignment.filters.dto.criteria;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import test.assignment.filters.dto.ComparisonOperatorDto;
+
+import static test.assignment.filters.error.ErrorConstants.*;
+import static test.assignment.filters.validator.FiltersValidationConstants.MAX_FILTER_NAME_INPUT;
+import static test.assignment.filters.validator.FiltersValidationConstants.MAX_SELECTION_NAME_INPUT;
 
 @Getter
 @Setter

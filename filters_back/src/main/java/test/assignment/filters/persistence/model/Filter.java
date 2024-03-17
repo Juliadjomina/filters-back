@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
 
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -23,6 +24,10 @@ public class Filter {
 
     @Column(name = "filter_name", nullable = false)
     private String filterName;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "selection_id")
+    private Selection selection;
 
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime cratedAt;
