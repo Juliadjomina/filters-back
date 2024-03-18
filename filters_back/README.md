@@ -5,20 +5,6 @@
 
 * JDK 21
 
-## Lokaalne testide jooksutamine
-
-Liikuda kataloogi kus asub docker-compose fail ja käivatada
-
-```
-cd docker
-docker-compose up
-```
-
-Pärast testide jooksutamist eemaldada containerid (ka volumed ja orphan containerid)
-```
-docker-compose down -v --remove-orphans
-```
-
 ## Lokaalne arendus
 
 Dockeri andmebaasi jooksutamine
@@ -38,3 +24,19 @@ Swagger UI
 ```
 http://localhost:8080/api/swagger-ui/index.html#/
 ```
+
+
+## Lokaalne testide jooksutamine
+
+Liikuda kataloogi kus asub docker-compose fail ja käivatada
+
+```
+cd docker
+docker-compose up
+```
+
+Pärast testide jooksutamist eemaldada containerid (ka volumed ja orphan containerid)
+```
+docker-compose down -v --remove-orphans
+```
+
