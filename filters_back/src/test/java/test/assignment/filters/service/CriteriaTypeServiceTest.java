@@ -3,12 +3,8 @@ package test.assignment.filters.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
 import test.assignment.filters.IntegrationTest;
 import test.assignment.filters.dto.CriteriaTypeDto;
-import test.assignment.filters.dto.FilterDto;
-import test.assignment.filters.mapper.CriteriaTypeMapper;
-import test.assignment.filters.persistence.repository.CriteriaTypeRepository;
 
 import java.util.List;
 

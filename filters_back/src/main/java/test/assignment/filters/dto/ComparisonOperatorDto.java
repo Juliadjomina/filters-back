@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import static test.assignment.filters.error.ErrorConstants.ERROR_COMPARISON_OPERATOR_NAME_NULL;
-import static test.assignment.filters.error.ErrorConstants.ERROR_COMPARISON_OPERATOR_NAME_TOO_LONG;
-import static test.assignment.filters.validator.FiltersValidationConstants.MAX_COMPARISON_OPERATOR_INPUT;
+import test.assignment.filters.error.ErrorConstants;
+import test.assignment.filters.validator.FiltersValidationConstants;
 
 @Getter
 @Setter
@@ -17,8 +15,8 @@ import static test.assignment.filters.validator.FiltersValidationConstants.MAX_C
 @NoArgsConstructor
 public class ComparisonOperatorDto {
 
-    @Size(max = MAX_COMPARISON_OPERATOR_INPUT, message = ERROR_COMPARISON_OPERATOR_NAME_TOO_LONG)
-    @NotNull(message = ERROR_COMPARISON_OPERATOR_NAME_NULL)
+    @Size(max = FiltersValidationConstants.MAX_COMPARISON_OPERATOR_INPUT, message = ErrorConstants.ERROR_COMPARISON_OPERATOR_NAME_TOO_LONG)
+    @NotNull(message = ErrorConstants.ERROR_COMPARISON_OPERATOR_NAME_NULL)
     private String operatorName;
     private String operatorType;
 }

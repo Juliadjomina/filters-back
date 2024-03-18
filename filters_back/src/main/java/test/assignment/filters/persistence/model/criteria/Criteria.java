@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.CriteriaType;
 import test.assignment.filters.persistence.model.Filter;
-import test.assignment.filters.persistence.model.Selection;
 
 import java.time.OffsetDateTime;
 

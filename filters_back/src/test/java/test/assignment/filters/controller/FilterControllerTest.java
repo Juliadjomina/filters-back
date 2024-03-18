@@ -9,6 +9,7 @@ import test.assignment.filters.dto.FilterResponseDto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.flywaydb.core.internal.util.FileUtils.readResourceAsString;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static test.assignment.filters.TestUtils.testDataJson;
@@ -17,7 +18,7 @@ class FilterControllerTest extends IntegrationTest {
 
     @ParameterizedTest(name = "Save filter and criteria test")
     @CsvSource(value = "FilterSaveRequest.json:FilterSaveResponse.json", delimiter = ':')
-    @Sql(scripts = "classpath:testdb/clean/cleanTestDb.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    @Sql(scripts = "classpath:testdb/clean/cleanTestDb.sql", executionPhase = AFTER_TEST_METHOD)
     void saveFilterAndCriteria(String request, String response) throws Exception {
         var filterAndCriteriaRequest = readResourceAsString(request);
 

@@ -6,6 +6,4 @@ import test.assignment.filters.persistence.model.CriteriaType;
 
 @Repository
 public interface CriteriaTypeRepository extends JpaRepository<CriteriaType, Long> {
-
-    CriteriaType getCriteriaTypeByType(String type);
 }

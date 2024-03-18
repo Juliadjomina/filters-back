@@ -7,9 +7,9 @@ import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.mapper.CriteriaCustomMapper;
 import test.assignment.filters.persistence.model.Filter;
 import test.assignment.filters.persistence.model.criteria.Criteria;
+import test.assignment.filters.persistence.repository.AmountCriteriaRepository;
 import test.assignment.filters.persistence.repository.CriteriaRepository;
 import test.assignment.filters.persistence.repository.DateCriteriaRepository;
-import test.assignment.filters.persistence.repository.AmountCriteriaRepository;
 import test.assignment.filters.persistence.repository.TitleCriteriaRepository;
 
 import java.util.ArrayList;

@@ -2,11 +2,11 @@ package test.assignment.filters.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import test.assignment.filters.dto.criteria.DateCriteriaDto;
 import test.assignment.filters.dto.criteria.AmountCriteriaDto;
+import test.assignment.filters.dto.criteria.DateCriteriaDto;
 import test.assignment.filters.dto.criteria.TitleCriteriaDto;
-import test.assignment.filters.persistence.model.criteria.DateCriteria;
 import test.assignment.filters.persistence.model.criteria.AmountCriteria;
+import test.assignment.filters.persistence.model.criteria.DateCriteria;
 import test.assignment.filters.persistence.model.criteria.TitleCriteria;
 
 @Mapper(componentModel = "spring")

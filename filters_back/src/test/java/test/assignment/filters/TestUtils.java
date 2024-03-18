@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 import test.assignment.filters.dto.FilterRequestDto;
+import test.assignment.filters.dto.criteria.AmountCriteriaDto;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
-import test.assignment.filters.dto.criteria.AmountCriteriaDto;
 import test.assignment.filters.dto.criteria.TitleCriteriaDto;
 
 import java.time.OffsetDateTime;
@@ -21,7 +21,7 @@ public class TestUtils {
         AmountCriteriaDto amountCriteriaDto = new AmountCriteriaDto();
         amountCriteriaDto.setAmount(23L);
         amountCriteriaDto.setCriteriaType(AMOUNT);
-        amountCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to",AMOUNT));
+        amountCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to", AMOUNT));
         return amountCriteriaDto;
     }
 
@@ -29,7 +29,7 @@ public class TestUtils {
         DateCriteriaDto dateCriteriaDto = new DateCriteriaDto();
         dateCriteriaDto.setDate(OffsetDateTime.now());
         dateCriteriaDto.setCriteriaType(DATE);
-        dateCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to",DATE));
+        dateCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Equal to", DATE));
         return dateCriteriaDto;
     }
 
@@ -37,7 +37,7 @@ public class TestUtils {
         TitleCriteriaDto titleCriteriaDto = new TitleCriteriaDto();
         titleCriteriaDto.setTitle("Test");
         titleCriteriaDto.setCriteriaType(TITLE);
-        titleCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains",TITLE));
+        titleCriteriaDto.setComparisonOperator(getComparisonOperatorDto("Contains", TITLE));
         return titleCriteriaDto;
     }
 

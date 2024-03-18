@@ -11,6 +11,7 @@ import test.assignment.filters.dto.criteria.AmountCriteriaDto;
 import test.assignment.filters.dto.criteria.CriteriaDto;
 import test.assignment.filters.dto.criteria.DateCriteriaDto;
 import test.assignment.filters.dto.criteria.TitleCriteriaDto;
+import test.assignment.filters.error.ErrorConstants;
 import test.assignment.filters.exceptions.FiltersServiceRestClientException;
 
 import java.util.ArrayList;
@@ -19,7 +20,6 @@ import java.util.List;
 import static jakarta.validation.Validation.buildDefaultValidatorFactory;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.ObjectUtils.isNotEmpty;
-import static test.assignment.filters.error.ErrorConstants.*;
 import static test.assignment.filters.validator.FiltersValidationConstants.TYPE;
 
 
@@ -47,7 +47,7 @@ public class FiltersValidator {
 
     public static void validateCriteriaDtos(List<CriteriaDto> criteriaDtos) {
         if (criteriaDtos == null || criteriaDtos.isEmpty()) {
-            throw new FiltersServiceRestClientException("criteria must not be null", ERROR_CRITERIA_NULL);
+            throw new FiltersServiceRestClientException("criteria must not be null", ErrorConstants.ERROR_CRITERIA_NULL);
         }
         criteriaDtos.forEach(FiltersValidator::isValidCriteria);
     }
@@ -57,7 +57,8 @@ public class FiltersValidator {
             case AmountCriteriaDto amountCriteriaDto ->
                     validateNonNull(amountCriteriaDto.getAmount(), "amount criteria value");
             case DateCriteriaDto dateCriteriaDto -> validateNonNull(dateCriteriaDto.getDate(), "date criteria value");
-            case TitleCriteriaDto titleCriteriaDto -> validateNonNull(titleCriteriaDto.getTitle(), "title criteria value");
+            case TitleCriteriaDto titleCriteriaDto ->
+                    validateNonNull(titleCriteriaDto.getTitle(), "title criteria value");
             default ->
                     throw new IllegalArgumentException("Unknown criteria type: " + criteria.getClass().getSimpleName());
         }
@@ -69,13 +70,13 @@ public class FiltersValidator {
             throwFiltersServiceError(errors);
         }
         if (!TYPE.contains(comparisonOperatorDto.getOperatorType())) {
-            throw new FiltersServiceRestClientException(format("comparison operator type should be amount, title or date, but it is: %s", comparisonOperatorDto.getOperatorType()), ERROR_WRONG_COMPARISON_OPERATOR_TYPE);
+            throw new FiltersServiceRestClientException(format("comparison operator type should be amount, title or date, but it is: %s", comparisonOperatorDto.getOperatorType()), ErrorConstants.ERROR_WRONG_COMPARISON_OPERATOR_TYPE);
         }
     }
 
     public static void isValidCriteria(CriteriaDto criteria) {
         if (!TYPE.contains(criteria.getCriteriaType())) {
-            throw new FiltersServiceRestClientException(format("criteria type should be amount, title or date, but it is %s", criteria.getCriteriaType()), ERROR_WRONG_CRITERIA_TYPE);
+            throw new FiltersServiceRestClientException(format("criteria type should be amount, title or date, but it is %s", criteria.getCriteriaType()), ErrorConstants.ERROR_WRONG_CRITERIA_TYPE);
         }
         isValidCriteriaValue(criteria);
         isValidComparisonOperatorDto(criteria.getComparisonOperator());
@@ -89,9 +90,9 @@ public class FiltersValidator {
 
     private static String getErrorCode(String fieldName) {
         return switch (fieldName) {
-            case "amount criteria value" -> ERROR_AMOUNT_CRITERIA_VALUE_NULL;
-            case "date criteria value" -> ERROR_DATE_CRITERIA_VALUE_NULL;
-            case "title criteria value" -> ERROR_TITLE_CRITERIA_VALUE_NULL;
+            case "amount criteria value" -> ErrorConstants.ERROR_AMOUNT_CRITERIA_VALUE_NULL;
+            case "date criteria value" -> ErrorConstants.ERROR_DATE_CRITERIA_VALUE_NULL;
+            case "title criteria value" -> ErrorConstants.ERROR_TITLE_CRITERIA_VALUE_NULL;
             default -> "";
         };
     }

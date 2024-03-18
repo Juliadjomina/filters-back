@@ -3,7 +3,6 @@ package test.assignment.filters.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
 import test.assignment.filters.IntegrationTest;
 import test.assignment.filters.dto.ComparisonOperatorDto;
 

@@ -3,10 +3,8 @@ package test.assignment.filters.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import test.assignment.filters.dto.ComparisonOperatorDto;
 import test.assignment.filters.dto.SelectionDto;
 import test.assignment.filters.mapper.SelectionMapper;
-import test.assignment.filters.persistence.model.ComparisonOperator;
 import test.assignment.filters.persistence.model.Selection;
 import test.assignment.filters.persistence.repository.SelectionRepository;
 

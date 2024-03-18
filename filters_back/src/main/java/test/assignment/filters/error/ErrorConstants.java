@@ -6,6 +6,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 public class ErrorConstants {
+
     public static final String ERROR_FILTER_NAME_TOO_LONG = "error.filter.name.too.long";
     public static final String ERROR_CRITERIA_NAME_TOO_LONG = "error.criteria.name.too.long";
     public static final String ERROR_COMPARISON_OPERATOR_NAME_TOO_LONG = "error.comparison.operator.name.too.long";
