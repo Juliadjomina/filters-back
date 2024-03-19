@@ -32,7 +32,6 @@ http://localhost:8080/api/swagger-ui/index.html#/
 Liikuda kataloogi kus asub docker-compose fail ja käivatada
 
 ```
-cd docker
 docker-compose up
 ```
 
