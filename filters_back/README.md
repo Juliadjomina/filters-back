@@ -10,7 +10,6 @@
 Dockeri andmebaasi jooksutamine
 
 ```
-cd docker
 docker-compose up
 ```
 
