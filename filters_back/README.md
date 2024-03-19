@@ -13,6 +13,8 @@ Dockeri andmebaasi jooksutamine
 docker-compose up
 ```
 
+Käivita rakendust
+
 Rakendus jookseb pordil 8080
 
 
